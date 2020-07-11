@@ -37,6 +37,12 @@ const itemSchema = new _mongoose.default.Schema({
 }, {
   timestamps: true
 });
+itemSchema.index({
+  list: 1,
+  name: 1
+}, {
+  unique: true
+});
 
 const Item = _mongoose.default.model('item', itemSchema);
 

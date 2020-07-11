@@ -3,11 +3,11 @@ import { json, urlencoded } from 'body-parser'
 import morgan from 'morgan'
 import config from './config'
 import cors from 'cors'
-// import { signup, signin, protect } from './utils/auth'
+import { signup, signin, protect } from './utils/auth'
 import { connect } from './utils/db'
-// import userRouter from './resources/user/user.router'
-// import itemRouter from './resources/item/item.router'
-// import listRouter from './resources/list/list.router'
+import userRouter from './resources/user/user.router'
+import itemRouter from './resources/item/item.router'
+import listRouter from './resources/list/list.router'
 
 export const app = express()
 export const router = express.Router()
@@ -19,18 +19,18 @@ app.use(json())
 app.use(urlencoded({ extended: true }))
 app.use(morgan('dev'))
 
-// app.post('/signup', signup)
-// app.post('/signin', signin)
+app.post('/signup', signup)
+app.post('/signin', signin)
 
 router.get('/me', (req, res) => {
   res.send({ me: 'hello from me route' })
 })
 
 app.use('/api', router)
-// app.use('/api', protect)
-// app.use('/api/user', userRouter)
-// app.use('/api/item', itemRouter)
-// app.use('/api/list', listRouter)
+app.use('/api', protect)
+app.use('/api/user', userRouter)
+app.use('/api/item', itemRouter)
+app.use('/api/list', listRouter)
 
 export const start = async () => {
   try {

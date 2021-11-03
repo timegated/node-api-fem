@@ -35,7 +35,7 @@
     "lodash": "^4.17.19",
     "mongoose": "^5.9.22",
     "morgan": "^1.10.0",
-    "validator": "^13.1.1"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.4",
